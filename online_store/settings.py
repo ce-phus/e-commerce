@@ -19,7 +19,7 @@ import environ
 env = environ.Env(DEBUG=(bool, False))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 environ.Env.read_env(BASE_DIR / ".env")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -55,11 +55,11 @@ THIRD_PARTY_APPS= [
 ]
 
 LOCAL_APPS=[
-    "apps.store",
     "apps.category",
     "apps.customer",
     "apps.orders",
     "apps.products",
+    "apps.store",
 ]
 
 
@@ -183,5 +183,5 @@ DJOSER = {
     "USERNAME_RESET_CONFIRM_URL": "password/reset/confirm/{uid}/{token}",
     "ACTIVATION_URL": "activate/{uid}/{token}",
     "SEND_ACTIVATION_EMAIL": True,
-    
+
 }

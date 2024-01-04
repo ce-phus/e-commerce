@@ -1,6 +1,6 @@
 from django.db import models
-from apps.products import Products
-from apps.customer import Customer
+from apps.products.models import Products
+from apps.customer.models import Customer
 import datetime
 
 # Create your models here.

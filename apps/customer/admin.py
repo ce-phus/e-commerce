@@ -3,14 +3,14 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
 
 from .forms import CustomUserChangeForm, CustomUserCreationForm
-from .models import User
+from .models import Customer
 
 
-class UserAdmin(BaseUserAdmin):
+class CustomerAdmin(BaseUserAdmin):
     ordering = ["email"]
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
-    model = User
+    model = Customer
     list_display = [
         "pkid",
         "id",
@@ -76,4 +76,4 @@ class UserAdmin(BaseUserAdmin):
     search_fields = ["email", "username", "first_name", "last_name"]
 
 
-admin.site.register(User, UserAdmin)
+admin.site.register(Customer, CustomerAdmin)

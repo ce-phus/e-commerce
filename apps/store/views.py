@@ -4,6 +4,8 @@ from apps.products.models import Products
 from django.views import View
 from rest_framework import status
 from rest_framework.response import Response
+from apps.customer.models import Customer
+from apps.orders.models import Order
 # Create your views here.
 
 class Index(View):
@@ -60,6 +62,28 @@ def store(request):
 
     print('you are : ', request.session.get('email'))
     return Response("Success")
+
+class Checkout(View):
+    def post(self, request):
+        address= request.POST.get('address')
+        phone = request.POST.get('phone')
+        customer = request.session.get('customer')
+        cart = request.session.get('cart')
+        products= Products.get_products_by_id(list(cart.keys()))
+        print(address, phone, customer, cart, products)
+
+        for product in products:
+            print(cart.get(str(product.id)))
+            order= Order(customer=Customer(id=customer),
+                         product=product,
+                         price=product.price,
+                         address=address,
+                         phone=phone,
+                         quantity=cart.get(str(product.id)))
+            order.save()
+
+            request.session['cart']={}
+            return Response('Success')
     
 
     

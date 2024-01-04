@@ -7,9 +7,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("app/vi/auth/", include('djoser.urls')),
     path("app/v1/auth/",include("djoser.urls.jwt")),
-    path('app/v1/categories/', include('apps.category.urls')),
-    path('app/v1/customer/', include('apps.category.urls')),
     path('app/v1/orders/', include('apps.orders.urls')),
+    path('app/v1/store/', include('apps.store.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
