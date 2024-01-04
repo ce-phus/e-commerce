@@ -1,4 +1,4 @@
-from django.shortcuts import Resp, HttpResponseRedirect
+from django.shortcuts import  HttpResponseRedirect
 from apps.category.models import Category
 from apps.products.models import Products
 from django.views import View

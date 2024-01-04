@@ -8,6 +8,7 @@ from django.utils.translation import gettext_lazy as _
 class Customer(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=50)
     last_name= models.CharField(max_length=50)
+    username = models.CharField(verbose_name=_("Username"), max_length=255, unique=True)
     phone= models.CharField(max_length=10)
     email= models.EmailField()
     is_staff = models.BooleanField(default=False)
@@ -20,8 +21,8 @@ class Customer(AbstractBaseUser, PermissionsMixin):
     objects = CustomUserManager()
 
     class Meta:
-        verbose_name = _("Customer")
-        verbose_name_plural = _("Customers")
+        verbose_name = _("User")
+        verbose_name_plural = _("Users")
 
     def __str__(self):
         return self.username

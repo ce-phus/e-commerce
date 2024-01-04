@@ -8,15 +8,12 @@ User = get_user_model()
 
 
 class UserSerializer(serializers.ModelSerializer):
-    gender = serializers.CharField(source="profile.gender")
     phone_number = PhoneNumberField(source="profile.phone_number")
-    profile_photo = serializers.ImageField(source="profile.profile_photo")
     country = CountryField(source="profile.country")
     city = serializers.CharField(source="profile.city")
-    top_seller = serializers.BooleanField(source="profile.top_seller")
     first_name = serializers.SerializerMethodField()
     last_name = serializers.SerializerMethodField()
-    full_name = serializers.SerializerMethodField(source="get_full_name")
+    
 
     class Meta:
         model = User
@@ -27,12 +24,10 @@ class UserSerializer(serializers.ModelSerializer):
             "first_name",
             "last_name",
             "full_name",
-            "gender",
             "phone_number",
             "profile_photo",
             "country",
             "city",
-            "top_seller",
         ]
 
     def get_first_name(self, obj):
@@ -51,4 +46,4 @@ class UserSerializer(serializers.ModelSerializer):
 class CreateUserSerializer(UserCreateSerializer):
     class Meta(UserCreateSerializer.Meta):
         model = User
-        fields = ["id", "username", "email", "first_name", "last_name", "password"]
+        fields = ["username", "email", "first_name", "last_name", "password"]

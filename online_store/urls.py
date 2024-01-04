@@ -5,7 +5,7 @@ from . import settings
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("app/vi/auth/", include('djoser.urls')),
+    path("app/v1/auth/", include("djoser.urls")),
     path("app/v1/auth/",include("djoser.urls.jwt")),
     path('app/v1/orders/', include('apps.orders.urls')),
     path('app/v1/store/', include('apps.store.urls')),

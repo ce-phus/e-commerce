@@ -5,7 +5,7 @@ import datetime
 
 # Create your models here.
 
-class Order (models.Model()):
+class Order (models.Model):
     product =models.ForeignKey(Products,
                                on_delete=models.CASCADE)
     customer=models.ForeignKey(Customer, on_delete=models.CASCADE)
